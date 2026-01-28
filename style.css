@@ -1,0 +1,258 @@
+/* ================= RESET ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f6f8;
+    color: #1f2933;
+    line-height: 1.6;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    color: white;
+    padding: 30px;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.header-left {
+    text-align: right;
+}
+
+.brand {
+    font-size: 2.6rem;
+    font-weight: bold;
+}
+
+.slogan {
+    font-size: 1.05rem;
+    opacity: 0.95;
+}
+
+.header-right {
+    text-align: right;
+}
+
+/* ================= SEPARATORS ================= */
+
+.separator {
+    width: 100%;
+    height: 2px;
+    margin: 20px 0;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.8), transparent);
+}
+
+.separator-footer {
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.5), transparent);
+}
+
+/* ================= BUTTON ================= */
+
+.btn-contact {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ffffff, #dbeafe);
+    color: #1e3a8a;
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid #93c5fd;
+    transition: all 0.3s ease;
+}
+
+.btn-contact:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(255,255,255,0.4);
+}
+
+/* ================= CARDS GRID ================= */
+
+.cards-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* ================= CARD ================= */
+
+.card {
+    background-color: #f9fafb;
+    border-radius: 15px;
+    padding: 11px;
+    border: 2px solid #2563eb;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.25);
+}
+
+.card h2 {
+    position: relative;
+    margin-bottom: 25px;
+    padding: 12px 18px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 10px;
+    color: #1e3a8a;
+    z-index: 1;
+}
+
+.card h2::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2563eb, #60a5fa);
+    opacity: 0.4;
+    z-index: -1;
+    transition: 0.3s ease;
+}
+
+.card:hover h2::before {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.card img {
+    margin-top: 20px;
+    width: 100%;
+    max-height: 160px;
+    object-fit: contain;
+}
+
+/* ================= CONTACT CARD (CENTRÉE) ================= */
+
+.card-contact {
+    background: linear-gradient(135deg, #ffffff, #f3f6ff);
+    grid-column: 2 / 3;
+}
+
+/* ================= CONTACT FORM ================= */
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-form label {
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #c7d2fe;
+    font-size: 0.95rem;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37,99,235,0.2);
+}
+
+.contact-form button {
+    margin-top: 12px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.contact-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37,99,235,0.4);
+}
+
+/* ================= THANK YOU PAGE ================= */
+
+.thanks {
+    max-width: 600px;
+    margin: 80px auto;
+    text-align: center;
+}
+
+/* ================= FOOTER ================= */
+
+.footer {
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.footer p {
+    margin: 8px 0;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 992px) {
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-contact {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .header-left,
+    .header-right {
+        text-align: center;
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    .card img {
+        max-height: 220px;
+    }
+}
