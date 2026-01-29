@@ -71,7 +71,7 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
         
         if (response.ok && result.success) {
             // Redirection vers la page de remerciement
-            window.location.href = '/merci.html';
+            window.location.href = 'https://sam-system.github.io/home/merci.html';
         } else {
             statusDiv.style.color = '#dc2626';
             statusDiv.textContent = result.message || 'Erreur lors de l\'envoi. Veuillez réessayer.';
