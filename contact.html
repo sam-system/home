@@ -62,7 +62,7 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
     statusDiv.textContent = '';
     
     try {
-        const response = await fetch('/api/contact', {
+        const response = await fetch('https://sam-system.github.io/home/functions/api/contact.js', {
             method: 'POST',
             body: formData
         });
