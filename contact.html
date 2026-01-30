@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S@mSystem - Contact</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="header-content">
+        <div class="header-left">
+            <p class="brand">S@mSystem</p>
+            <p class="slogan">S@mSystem : L'informatique au bout du fil.</p>
+        </div>
+
+        <div class="header-right">
+            <p>Tel : 07.43.52.77.77</p>
+            <p>Mail : samsystem.contact@gmail.com</p>
+
+            <div class="separator"></div>
+
+            <a class="btn-contact" href="index.html">
+                Retour à l'accueil
+            </a>
+        </div>
+    </div>
+</header>
+
+<main class="cards-container">
+    <section class="card card-contact">
+        <h2>Me contacter</h2>
+        <img src="contact.png" alt="">
+
+        <form id="contactForm" class="contact-form">
+
+            <input type="text" name="_gotcha" style="display:none">
+
+            <label>Votre Nom :</label>
+            <input type="text" name="Nom" required>
+
+            <label>Votre Prenom :</label>
+            <input type="text" name="Prenom" required>
+
+            <label>Votre Tel :</label>
+            <input type="tel" name="Tel" required>
+
+            <label>Votre Mail :</label>
+            <input type="email" name="email" required>
+
+            <label>Le Sujet :</label>
+            <input type="text" name="Sujet" required>
+
+            <label>Entreprise Ou Particulier :</label>
+            <select name="Type" required>
+                <option value="Entreprise">Entreprise</option>
+                <option value="Particulier">Particulier</option>
+            </select>
+
+            <label>Votre Message :</label>
+            <textarea name="Message" rows="4" required></textarea>
+
+            <button type="submit">Envoyer</button>
+        </form>
+
+        <div id="formStatus" style="margin-top: 15px; text-align: center; font-weight: bold;"></div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="separator separator-footer"></div>
+    <p>S@mSystem : L'informatique au bout du fil.</p>
+    <p class="copyright">© S@mSystem</p>
+</footer>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    const statusDiv = document.getElementById('formStatus');
+    const submitButton = e.target.querySelector('button[type="submit"]');
+    
+    // Désactiver le bouton pendant l'envoi
+    submitButton.disabled = true;
+    submitButton.textContent = 'Envoi en cours...';
+    statusDiv.textContent = '';
+    
+    try {
+        // Détection de l'environnement
+        const isCloudflare = window.location.hostname.includes('sam-system.net');
+        
+        let response;
+        
+        if (isCloudflare) {
+            // Sur Cloudflare : utiliser ton API
+            response = await fetch('/api/contact', {
+                method: 'POST',
+                body: formData
+            });
+        } else {
+            // Sur GitHub Pages : utiliser Formspree
+            // IMPORTANT : Remplace 'YOUR_FORM_ID' par ton ID Formspree
+            // Crée un compte gratuit sur https://formspree.io/
+            response = await fetch('https://formspree.io/f/xjgwqjvr', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+        }
+        
+        if (response.ok) {
+            // Redirection vers la page de remerciement
+            window.location.href = 'merci.html';
+        } else {
+            const result = await response.json().catch(() => ({}));
+            statusDiv.style.color = '#dc2626';
+            statusDiv.textContent = result.message || 'Erreur lors de l\'envoi. Veuillez réessayer.';
+            submitButton.disabled = false;
+            submitButton.textContent = 'Envoyer';
+        }
+    } catch (error) {
+        statusDiv.style.color = '#dc2626';
+        statusDiv.textContent = 'Erreur de connexion. Veuillez réessayer.';
+        submitButton.disabled = false;
+        submitButton.textContent = 'Envoyer';
+    }
+});
+</script>
+
+</body>
+</html>
