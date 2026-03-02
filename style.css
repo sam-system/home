@@ -129,12 +129,12 @@ body {
     opacity: 0.4;
     z-index: -1;
     transition: 0.3s ease;
-    text-align: center;
 }
 
 .card:hover h2::before {
     opacity: 1;
     transform: scale(1.05);
+    text-align: center;
 }
 
 .card img {
