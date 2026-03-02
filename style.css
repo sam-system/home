@@ -120,6 +120,10 @@ body {
     z-index: 1;
 }
 
+.card p {
+    align-self: center;
+}
+
 .card h2::before {
     content: "";
     position: absolute;
