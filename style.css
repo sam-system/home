@@ -134,7 +134,6 @@ body {
 .card:hover h2::before {
     opacity: 1;
     transform: scale(1.05);
-    text-align: center;
 }
 
 .card img {
