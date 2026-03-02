@@ -122,7 +122,6 @@ body {
 
 .card p {
     align-self: center;
-    align-content: center;
 }
 
 .card h2::before {
