@@ -123,6 +123,7 @@ body {
 
 .card p {
     align-self: center;
+    margin: auto;
 }
 
 .card h2::before {
