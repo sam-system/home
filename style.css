@@ -136,10 +136,6 @@ body {
     transform: scale(1.05);
 }
 
-.card p {
-    align-content: center;
-}
-
 .card img {
     margin-top: 20px;
     width: 100%;
