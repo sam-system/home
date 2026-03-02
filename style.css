@@ -88,7 +88,6 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    align-content: center;
 }
 
 /* ================= CARD ================= */
@@ -130,6 +129,7 @@ body {
     opacity: 0.4;
     z-index: -1;
     transition: 0.3s ease;
+    align-content: center;
 }
 
 .card:hover h2::before {
